@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Nava Template</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.3/animate.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.counterup/1.0/jquery.counterup.min.js"></script>
+    <script src="scripts/parallax/parallaxie.js"></script>
+
+</head>
+<body>
+<header class="header" style='background: url("images/header_bg.jpg")'>
+    <div class="menu">
+        <div class="menu_logo">
+            <img src="images/nava_logo.png" width="166" height="33"  alt="Nava">
+        </div>
+
+        <div class="menu_navigation" id="logger">
+            <a href="">Top destinations</a>
+            <a href="">Add your boat</a>
+            <a href="" @click.prevent="showModal = true">Sign up</a>
+            <modal v-if="showModal" @close="showModal = false"></modal>
+        </div>
+    </div>
+    <div class="motto">
+        <h1 class="gen_h1">Reserve a boat now!</h1>
+        <h3 class="gen_h3">And set your sails into paradise!</h3>
+        <div class="searchBoat">
+            <input type="text" placeholder="What is your destination, Sailor?" class="gen_input_form">
+            <button class="gen_button"><span class="sailboat"></span>Find a boat</button>
+        </div>
+    </div>
+    <div class="statistics">
+        <ul class="statistics_list">
+            <li class="statistics_item"><h4 class="counter">2,300</h4> <span>Destinations</span></li>
+            <li class="statistics_item"><h4 class="counter">1,000</h4> <span>Cities</span></li>
+            <li class="statistics_item"><h4 class="counter">35,000</h4> <span>Boats</span></li>
+            <li class="statistics_item"><h4 class="counter">50,000</h4> <span>Sailors</span></li>
+        </ul>
+
+    </div>
+</header>
+
+<section class="destinations" id="app1">
+    <h2 class="gen_h2">
+        Explore our top destinations
+    </h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam quod, voluptas.</p>
+
+    <div class="destination_list">
+        <transition-group  name="list-complete" tag="div">
+        <div v-for="(dest, index) in destinations"
+             :key="index"
+             :data-index="index"
+             :style="{ 'background-image': 'url(images/offers/'+dest.image+')' }"
+
+             >
+            <div>
+                <div class="boatFlag">{{dest.flag}}</div>
+                <div class="destination_location">
+                    <h5>{{dest.name}}</h5>
+                    <span>{{dest.country}}</span>
+                </div>
+            </div>
+        </div>
+        </transition-group>
+    </div>
+
+
+    <span><a href="" @click.prevent="add_destinations">EXPLORE MORE DESTINATIONS</a></span>
+
+
+</section>
+
+<section class="boat" id="boat" style='background: url("images/boat_bg.jpg")' >
+    <h1 class="gen_h1">Have your own boat?</h1>
+    <h3 class="gen_h3">Navigare necesse est, vivere non est necesse</h3>
+    <a href="">Make money with your boat</a>
+</section>
+
+<section class="boats" id="boats">
+    <h2 class="gen_h2">
+        Featured boats
+    </h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam quod, voluptas.</p>
+
+    <div class="boat_list">
+        <transition-group name="list-complete" tag="div">
+        <div v-for="(boat, index) in boats"
+             :key="index"
+             :data-index="index"
+             :style="{ 'background-image': 'url(images/boats/'+boat.image+')' }"
+
+        >
+            <div>
+                <div class="priceFlag">€{{boat.price}} / day</div>
+                <div class="destination_location">
+                    <h5>{{boat.name}}</h5>
+                    <span class="location">{{boat.country}}</span><span class="passengers">{{boat.pass}} Berth</span>
+                </div>
+            </div>
+        </div>
+        </transition-group>
+
+    </div>
+
+
+    <span><a href="" @click.prevent="add_boats">Load more boats</a></span>
+
+
+</section>
+
+<footer class="footer">
+    <div class="footer_information">
+            <div class="top_locations">
+            <h4 class="gen_h4">Top locations</h4>
+            <ul class="footer_list">
+                <li>Place for vacation</li>
+                <li>Competitions</li>
+                <li>Exhibitions</li>
+                <li>Where to buy?</li>
+                <li>How to choose?</li>
+            </ul>
+        </div>
+            <div class="featured_boats">
+                <h4 class="gen_h4">Featured boats</h4>
+                <ul class="footer_list">
+                    <li>Boat of the year</li>
+                    <li>Best boats</li>
+                    <li>Boat classification</li>
+                    <li>My boat for sale</li>
+                </ul>
+            </div>
+            <div class="subscribe">
+                <h4 class="gen_h4">Subscribe to our newsletter</h4>
+              <div class="subscribe_mail">
+                  <input type="text" placeholder="Your email address" class="gen_input_form subscribe_form">
+                  <button class="gen_button subscribe_button">Subscribe</button>
+              </div>
+                <div class="social">
+                <span class="facebook"></span>
+                <span class="twitter"></span>
+                <span class="google"></span>
+
+                </div>
+            </div>
+            <div class="contacts">
+                <h4 class="gen_h4">Contact us</h4>
+                <ul class="footer_list">
+                    <li>contact@email.com</li>
+                    <li>+15-224-451-52</li>
+                    <li>+12-525-412-26</li>
+                </ul>
+            </div>
+    </div>
+</footer>
+
+
+<script type="text/x-template" id="modal-template">
+    <transition name="modal">
+        <div class="modal-mask">
+            <div class="modal-wrapper">
+                <div class="modal-container">
+                    <input type="text" placeholder="Enter your e-mail" class="gen_login_form">
+                    <input type="password" placeholder="Enter your password" class="gen_login_form">
+                    <button class="gen_login_button">Enter</button>
+                    <a href="#" @click.prevent class="forgotPass">I forgot my password</a>
+                    <a href="#" click.prevent class="createAccount">Create new account</a>
+
+                    <div class="modal-footer">
+                           <button class="modal-default-button" @click="$emit('close')">
+                               <i class="fas fa-times"></i>
+                            </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </transition>
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="scripts/scripts_jquery.js"></script>
+
+</body>
+</html>
